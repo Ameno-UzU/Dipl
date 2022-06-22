@@ -1,0 +1,123 @@
+{% extends 'crneuro/block.html' %}
+{% load static %}
+
+{{title}}
+{% block navb %}
+    <nav class="nav nav-pills flex-column flex-sm-row gap-2">
+      <a class="flex-sm-fill text-sm-center nav-link" href="http://127.0.0.1:8000/tasks">Задачи</a>
+      <a class="flex-sm-fill text-sm-center nav-link" href="http://127.0.0.1:8000/tools">Инструменты</a>
+      <a class="flex-sm-fill text-sm-center nav-link active" aria-current="page" href="http://127.0.0.1:8000/workers">Рабочие</a>
+    </nav>
+    <nav class="nav nav-pills flex-column flex-sm-row gap-2">
+      <a class="flex-sm-fill text-sm-center nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Фамилия Имя</a>
+      <a class="flex-sm-fill text-sm-center nav-link" href="http://127.0.0.1:8000/home">Выйти</a>
+    </nav>
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-start">
+    <!список вкладок сотрудников>
+    <div class="d-flex align-items-start overflow-auto col-3 m-3" style="height: 495px;">
+    <div class="btn-group-vertical col-12">
+    {% for p in posts %}
+        <a class="btn btn-outline-primary " href="{{ p.get_absolute_url }}" role="button">{{p.fio}}</a>
+    {% endfor %}
+    </div>
+    </div>
+    <!информация сотрудников>
+    <div class = "m-3 align-self-start">
+    <div class="accordion " id="accordionPanelsStayOpenExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            Профиль : {{prof.fio}}
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+          <div class="accordion-body">
+            <div class="d-flex align-items-center gap-3">
+            <div class="flex-grow-1 ms-3">
+                <p></p><h5 class="card-title">{{prof.fio}}</h5></p>
+                <p class="card-text">Должность: {{prof.position}}</p>
+                <p class="card-text">Женат</p>
+                <p class="card-text">Дата рождения: {{prof.b_date}}</p>
+                <p class="card-text">Дата начала работы: {{prof.w_date}}</p>
+                <p class="card-text">Номер телфона: +79{{prof.phone}}</p>
+            </div>
+            <div class="flex-shrink-0"><img src="{% static 'crneuro/media/fl.jpg' %}" alt=""></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+            Статистика
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+          <div class="accordion-body">
+            <strong>Статистика.</strong></div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+            Статистика
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+          <div class="accordion-body">
+            <strong>Статистика.</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+</div>
+
+<!кнопка добавление новой записи>
+<a class="btn btn-primary col-3 m-3" data-bs-toggle="modal" href="#exampleModalToggle" role="button">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard2-plus" viewBox="0 0 16 16">
+  <path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5h3Z"></path>
+  <path d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-12Z"></path>
+  <path d="M8.5 6.5a.5.5 0 0 0-1 0V8H6a.5.5 0 0 0 0 1h1.5v1.5a.5.5 0 0 0 1 0V9H10a.5.5 0 0 0 0-1H8.5V6.5Z"></path>
+  </svg>
+  Добавить профиль
+</a>
+
+
+
+{% endblock %}
+
+<!формы ввода>
+{% block data %}
+<!данные>
+<div class="mb-3">
+    <input class="form-control" type="text" placeholder="Фамилия Имя Отчество" aria-label="Фамилия Имя Отчество">
+</div>
+<div class="mb-3">
+    <input class="form-control" type="text" placeholder="Номер сотрудника" aria-label="Номер сотрудника">
+</div>
+<!фото>
+<div class="input-group mb-3">
+    <input type="file" class="form-control" id="inputgroupfile02">
+    <label class="input-group-text" for="inputgroupfile02">Фото</label>
+</div>
+<div class="mb-3">
+    <input class="form-control" type="text" placeholder="Семейное положение" aria-label="Семейное положение">
+</div>
+<div class="mb-3">
+    <input class="form-control" type="text" placeholder="Должность" aria-label="Должность">
+</div>
+<div class="mb-3">
+    <input class="form-control" type="text" placeholder="Дата начала работы" aria-label="Дата начала работы">
+</div>
+<div class="mb-3">
+    <input class="form-control" type="text" placeholder="Дата рождения" aria-label="Дата рождения">
+</div>
+<div class="mb-3">
+    <input class="form-control" type="text" placeholder="+79ХХХХХХХХХ" aria-label="Номер телефона">
+</div>
+{% endblock %}

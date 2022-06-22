@@ -1,0 +1,86 @@
+{% extends 'crneuro/block.html' %}
+{% load static %}
+
+{{title}}
+
+{% block navb %}
+    <nav class="nav nav-pills flex-column flex-sm-row gap-2">
+      <a class="flex-sm-fill text-sm-center nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Задачи</a>
+      <a class="flex-sm-fill text-sm-center nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Инструменты</a>
+      <a class="flex-sm-fill text-sm-center nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Рабочие</a>
+    </nav>
+    <nav class="nav nav-pills flex-column flex-sm-row gap-2">
+      <a class="flex-sm-fill text-sm-center nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Логин</a>
+      <a class="flex-sm-fill text-sm-center nav-link active" aria-current="page" href="http://127.0.0.1:8000/tasks">Войти</a>
+    </nav>
+{% endblock %}
+
+{% block content %}
+
+<div class="row row-cols-md-3 g-0 mt-3 d-flex justify-content-center">
+
+<!описательная карточка 1>
+    <div class="col" style="width: 26rem;">
+        <div class="card bg-primary text-white h-60">
+            <img src="{% static 'crneuro/media/fl.jpg' %}" class="card-img" alt="">
+            <div class="card-img-overlay">
+                <h5 class="card-title">CinRolls Neuro</h5>
+                <p class="card-text">Группа учащихся ВГТУ ФИТКБ для работы над различными проектами.</p>
+                <p class="card-text">Начало работы было положено в ходе проектного интенсива.</p>
+            </div>
+        </div>
+    </div>
+
+<!авторизация>
+  <div class="col" style="margin-left: 20px;">
+    <div class="card text-center h-60">
+        <div class="card-header">
+            <ul class="nav nav-pills card-header-pills gap-2" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Логин</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Номер</button>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body" style="padding-bottom: 52px;">
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                    <div class="mb-3">
+                        <input class="form-control" type="text" placeholder="Логин" aria-label="Логин">
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" type="password" placeholder="Пароль" aria-label="Пароль">
+                    </div>
+                    <a href="#" class="btn btn-primary">Войти</a>
+                </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                    <div class="mb-3">
+                        <input class="form-control" type="text" placeholder="Номер" aria-label="Номер">
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" type="password" placeholder="Пароль" aria-label="Пароль">
+                    </div>
+                    <a href="#" class="btn btn-primary">Войти</a>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+    
+<!описательная карточка 2>
+    <div class="col" style="margin-left: 20px;  width: 26rem;">
+        <div class="card bg-primary text-white h-60">
+            <img src="{% static 'crneuro/media/bl.jpg' %}" class="card-img" alt="">
+            <div class="card-img-overlay">
+                <h5 class="card-title">Название предприятия</h5>
+                <p class="card-text">Здесь могут содержаться информация о компании и предприятие.</p>
+                <p class="card-text">Или помощь с авторизацией, регистрацией и контакты.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
